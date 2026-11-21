@@ -177,7 +177,9 @@
     $("modalTitle").textContent = v.title;
     $("player").innerHTML = "";
     const f = document.createElement("iframe");
-    f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+    f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1&origin=${encodeURIComponent(location.origin)}`;
+    f.referrerPolicy = "strict-origin-when-cross-origin";
+    $("ytLink").href = `https://www.youtube.com/watch?v=${id}`;
     f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
     f.allowFullscreen = true;
     f.title = v.title;
