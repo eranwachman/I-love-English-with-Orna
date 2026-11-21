@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://eranwachman.github.io/I-love-English-with-Orna/sitemap.xml
