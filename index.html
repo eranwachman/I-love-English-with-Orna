@@ -4,45 +4,70 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>I Love English with Orna</title>
-  <meta name="description" content="Fun short English videos for kids. New videos appear automatically!">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+  <meta name="description" content="Fun short English videos with Alfie, Fox and Cat. New videos appear automatically!">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐶</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="floaties" aria-hidden="true"></div>
+  <div class="sky" aria-hidden="true"></div>
 
-  <header class="hero">
-    <div class="hero-badges">
-      <span class="pill" id="levelPill">⭐ Level 1 · Beginner</span>
-      <span class="pill" id="starPill">🌟 0 stars</span>
+  <nav class="topbar">
+    <a class="logo" href="#top"><span>🐾</span> Orna's English</a>
+    <div class="progress" title="Watch videos to level up!">
+      <span id="levelPill">⭐ Level 1 · Beginner</span>
+      <div class="bar"><i id="levelBar"></i></div>
+      <span id="starPill">🌟 0</span>
     </div>
-    <h1>
-      <span class="w w1">I</span>
-      <span class="w w2">Love</span>
-      <span class="w w3">English</span>
-      <span class="w w4">with</span>
-      <span class="w w5">Orna!</span>
-    </h1>
-    <p class="tagline">Watch, learn and collect stars! 🎉</p>
-    <div class="controls">
-      <input id="search" type="search" placeholder="🔍 Find a video…" aria-label="Search videos">
-      <button id="surprise" class="btn btn-pink">🎲 Surprise me!</button>
-      <button id="favToggle" class="btn btn-blue" aria-pressed="false">💖 My favorites</button>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="slides" id="slides" aria-live="off"></div>
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <p class="kicker">🎬 New English videos for kids</p>
+      <h1>
+        <span class="w w1">I</span>
+        <span class="w w2">Love</span>
+        <span class="w w3">English</span>
+        <span class="w w4">with</span>
+        <span class="w w5">Orna!</span>
+      </h1>
+      <div class="hero-cta">
+        <button id="watchNow" class="btn btn-yellow">▶ Watch now</button>
+        <button id="surprise" class="btn btn-pink">🎲 Surprise me!</button>
+      </div>
+      <div class="now"><span class="live">NEW</span> <b id="nowTitle"></b></div>
+      <div class="dots" id="dots"></div>
     </div>
+    <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,64 C240,120 480,0 720,48 C960,96 1200,16 1440,64 L1440,120 L0,120 Z" fill="var(--bg)"/>
+    </svg>
   </header>
 
   <main>
-    <section id="featured" class="featured" hidden></section>
+    <section class="friends" aria-label="Meet the friends">
+      <h2>Meet the friends!</h2>
+      <div class="friend-row" id="friends"></div>
+    </section>
+
+    <section class="toolbar">
+      <div class="chips" id="chips"></div>
+      <div class="tools">
+        <input id="search" type="search" placeholder="🔍 Find a video…" aria-label="Search videos">
+        <button id="favToggle" class="btn btn-blue" aria-pressed="false">💖 Favorites</button>
+      </div>
+    </section>
+
     <h2 class="section-title" id="gridTitle">🎬 All videos</h2>
     <div id="grid" class="grid"></div>
     <p id="empty" class="empty" hidden>Oops! No videos here yet. 🙈</p>
   </main>
 
   <footer>
-    <p>Made with 💜 for kids who love English.</p>
+    <p class="big">Made with 💜 for kids who love English</p>
     <p class="small">Videos by <a id="channelLink" href="https://www.youtube.com/@AlfieForKids" target="_blank" rel="noopener">Alfie For Kids</a> · new videos appear automatically · <span id="updated"></span></p>
   </footer>
 
