@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I Love English with Orna</title>
+  <meta name="description" content="Fun short English videos for kids. New videos appear automatically!">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="floaties" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="hero-badges">
+      <span class="pill" id="levelPill">⭐ Level 1 · Beginner</span>
+      <span class="pill" id="starPill">🌟 0 stars</span>
+    </div>
+    <h1>
+      <span class="w w1">I</span>
+      <span class="w w2">Love</span>
+      <span class="w w3">English</span>
+      <span class="w w4">with</span>
+      <span class="w w5">Orna!</span>
+    </h1>
+    <p class="tagline">Watch, learn and collect stars! 🎉</p>
+    <div class="controls">
+      <input id="search" type="search" placeholder="🔍 Find a video…" aria-label="Search videos">
+      <button id="surprise" class="btn btn-pink">🎲 Surprise me!</button>
+      <button id="favToggle" class="btn btn-blue" aria-pressed="false">💖 My favorites</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="featured" class="featured" hidden></section>
+    <h2 class="section-title" id="gridTitle">🎬 All videos</h2>
+    <div id="grid" class="grid"></div>
+    <p id="empty" class="empty" hidden>Oops! No videos here yet. 🙈</p>
+  </main>
+
+  <footer>
+    <p>Made with 💜 for kids who love English.</p>
+    <p class="small">Videos by <a id="channelLink" href="https://www.youtube.com/@AlfieForKids" target="_blank" rel="noopener">Alfie For Kids</a> · new videos appear automatically · <span id="updated"></span></p>
+  </footer>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close" id="close" aria-label="Close video">✖</button>
+      <div class="player" id="player"></div>
+      <h3 id="modalTitle"></h3>
+      <div class="modal-actions">
+        <button id="modalFav" class="btn btn-pink">💖 Love it!</button>
+        <button id="modalNext" class="btn btn-blue">Next video ➡️</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <script src="app.js"></script>
+</body>
+</html>

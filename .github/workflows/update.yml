@@ -1,0 +1,55 @@
+name: Update videos and deploy
+
+on:
+  schedule:
+    - cron: "*/30 * * * *" # check the channel every 30 minutes
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch latest videos
+        run: node scripts/update.mjs
+      - name: Commit new videos
+        run: |
+          if [ -n "$(git status --porcelain data/videos.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/videos.json
+            git commit -m "Update videos from YouTube channel"
+            git push
+          fi
+      - name: Assemble site
+        run: |
+          mkdir _site
+          cp -r index.html style.css app.js data _site/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
